@@ -13,3 +13,21 @@ module.exports.listEmployers = async (event) => {
     body: JSON.stringify(employers),
   };
 };
+
+module.exports.getEmployer = async (event) => {
+  const { id } = event.pathParameters;
+
+  const employer = employers.find((item) => item.id === Number(id));
+
+  if (!employer) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify({ error: "Employer not found" }, null, 2),
+    };
+  }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(employer, null, 2),
+  };
+};
