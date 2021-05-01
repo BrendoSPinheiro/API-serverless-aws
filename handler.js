@@ -14,3 +14,11 @@ module.exports.listEmployers = async (event) => {
     body: JSON.stringify(employers),
   };
 };
+
+module.exports.getEmployer = async (event) => {
+  console.log(event);
+  return {
+    statusCode: 200,
+    body: JSON.stringify(),
+  };
+};
