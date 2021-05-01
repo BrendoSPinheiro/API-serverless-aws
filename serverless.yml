@@ -31,3 +31,7 @@ provider:
 functions:
   listEmployers:
     handler: handler.listEmployers
+    events:
+      - http:
+          path: employers
+          method: get
