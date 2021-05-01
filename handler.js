@@ -23,7 +23,7 @@ module.exports.getEmployer = async (event) => {
   if (!employer) {
     return {
       statusCode: 404,
-      body: JSON.stringify({ message: "Employer not found" }, null, 2),
+      body: JSON.stringify({ error: "Employer not found" }, null, 2),
     };
   }
 

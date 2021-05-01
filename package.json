@@ -1,0 +1,10 @@
+{
+  "name": "stefanini-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Brendo Souza Pinheiro <brendo.spinheiro@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-offline": "^7.0.0"
+  }
+}
