@@ -8,7 +8,6 @@ const employers = [
 ];
 
 module.exports.listEmployers = async (event) => {
-  console.log(event);
   return {
     statusCode: 200,
     body: JSON.stringify(employers),
