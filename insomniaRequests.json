@@ -1,0 +1,211 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-05-03T17:48:23.568Z",
+  "__export_source": "insomnia.desktop.app:v2020.5.2",
+  "resources": [
+    {
+      "_id": "req_827d527a5bd748878507e154932c2424",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1619881389455,
+      "created": 1619880988618,
+      "url": "{{ _.baseUrl }}/employers",
+      "name": "List Employers",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1619881022968,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "parentId": null,
+      "modified": 1619880895485,
+      "created": 1619880895485,
+      "name": "Stefanini-challenge",
+      "description": "",
+      "scope": null,
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_8ca0ffc67e704d2c9c213c23a2ee1336",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1620063757638,
+      "created": 1619881022918,
+      "url": "{{ _.baseUrl }}/employers/5a478b9e-f9ce-4d81-a0c2-15bb6fd36bba",
+      "name": "Get Employer",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1619881022918,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2f636a704433496d9d7f59bdb6a606ca",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1620063695157,
+      "created": 1619881408660,
+      "url": "{{ _.baseUrl }}/employers",
+      "name": "Create Employer",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"nome\": \"Matheus\",\n\t\"idade\": 21,\n\t\"cargo\": \"diretor\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_57eb5f092f2e480990b917216052e7bb"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1619881022868,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a4a64a8bfdc04dddab750dbea4014407",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1620063764811,
+      "created": 1619881428093,
+      "url": "{{ _.baseUrl }}/employers/5a478b9e-f9ce-4d81-a0c2-15bb6fd36bba",
+      "name": "Update Employer",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"nome\": \"Matheus OLIVEIRA\",\n\t\"idade\": 21,\n\t\"cargo\": \"gerente\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_26278943c5234bd0ac252e067e74e7e2"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1619881022818,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4f8acd7b22cb4646a81f3ae6a467506a",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1620063775619,
+      "created": 1619881439774,
+      "url": "{{ _.baseUrl }}/employers/5a478b9e-f9ce-4d81-a0c2-15bb6fd36bba",
+      "name": "Delete Employer",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1619881022768,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_67f612e916747d52a99b025b6154cffab38aa793",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1619880895557,
+      "created": 1619880895557,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1619880895557,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_67f612e916747d52a99b025b6154cffab38aa793",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1619880895558,
+      "created": 1619880895558,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_5a882ed2b23640c7ba57d8ec7c4fb421",
+      "parentId": "wrk_5d81be7c3af343f299f774a7fdc3a139",
+      "modified": 1619880895491,
+      "created": 1619880895491,
+      "fileName": "Stefanini-challenge",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_81ac58f03ed24e9bbe1560028922c95f",
+      "parentId": "env_67f612e916747d52a99b025b6154cffab38aa793",
+      "modified": 1619883544688,
+      "created": 1619880922052,
+      "name": "DEV",
+      "data": { "baseUrl": "http://localhost:3000/dev" },
+      "dataPropertyOrder": { "&": ["baseUrl"] },
+      "color": "#3764b9",
+      "isPrivate": false,
+      "metaSortKey": 1619880922052,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_cc20bc0583dc49a2824c15f7558c47c1",
+      "parentId": "env_67f612e916747d52a99b025b6154cffab38aa793",
+      "modified": 1620038849179,
+      "created": 1619883708995,
+      "name": "HOMOLOG",
+      "data": {
+        "baseUrl": "https://pq0sq4s4lj.execute-api.sa-east-1.amazonaws.com/dev"
+      },
+      "dataPropertyOrder": { "&": ["baseUrl"] },
+      "color": "#37aea6",
+      "isPrivate": false,
+      "metaSortKey": 1619880922102,
+      "_type": "environment"
+    }
+  ]
+}
