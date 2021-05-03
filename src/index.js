@@ -7,7 +7,7 @@ const employers = [
   { id: 4, name: "Jose", age: 57, office: "chefe" },
 ];
 
-const { db } = require("./src/database");
+const { db } = require("./database");
 const params = {
   TableName: "employers",
 };
