@@ -3,6 +3,16 @@ const { v4: uuid } = require("uuid");
 const { EmployerRepository } = require("../repositories/EmployerRepository");
 
 class EmployerService {
+  async findById(id) {
+    const employerById = await EmployerRepository.findById(id);
+
+    if (!employerById) {
+      throw new Error("Employer not found");
+    }
+
+    return employerById;
+  }
+
   async create({ name, age, office }) {
     if (!name || !age || !office) {
       throw new Error("Data is required");

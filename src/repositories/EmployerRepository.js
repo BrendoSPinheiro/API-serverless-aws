@@ -1,6 +1,19 @@
 const { db } = require("../database");
 
 class EmployerRepository {
+  async findById(id) {
+    const { Item } = await db
+      .get({
+        TableName: "employers",
+        Key: {
+          id,
+        },
+      })
+      .promise();
+
+    return Item;
+  }
+
   async create(employer) {
     await db
       .put(

@@ -28,13 +28,15 @@ module.exports.listEmployers = async (event) => {
 module.exports.getEmployer = async (event) => {
   const { id } = event.pathParameters;
 
-  const employer = employers.find((item) => item.id === Number(id));
+  try {
+    const employer = await EmployerService.findById(id);
 
-  if (!employer) {
-    return formatJSONResponse(404, { error: "Employer not found" });
+    return formatJSONResponse(200, employer);
+  } catch ({ error }) {
+    return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
+      error: error.message,
+    });
   }
-
-  return formatJSONResponse(200, employer);
 };
 
 module.exports.createEmployer = async (event) => {
