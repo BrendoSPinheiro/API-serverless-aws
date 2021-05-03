@@ -25,10 +25,15 @@ functions:
       - http:
           path: employers
           method: get
-
   getEmployer:
     handler: handler.getEmployer
     events:
       - http:
           path: employers/{id}
           method: get
+  createEmployer:
+    handler: handler.createEmployer
+    events:
+      - http:
+          path: employers
+          method: post
