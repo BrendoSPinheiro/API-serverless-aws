@@ -1,13 +1,7 @@
 "use strict";
 
-const employers = [
-  { id: 1, name: "Brendo", age: 21, office: "chefe" },
-  { id: 2, name: "Andrei", age: 15, office: "chefe" },
-  { id: 3, name: "Maisa", age: 50, office: "chefe" },
-  { id: 4, name: "Jose", age: 57, office: "chefe" },
-];
-
 const { db } = require("./database");
+const { EmployerService } = require("./services/EmployerService");
 const params = {
   TableName: "employers",
 };
@@ -46,20 +40,13 @@ module.exports.getEmployer = async (event) => {
 module.exports.createEmployer = async (event) => {
   const { name, age, office } = JSON.parse(event.body);
 
-  if (!name || !age || !office) {
-    return formatJSONResponse(400, { error: "data is required" });
+  try {
+    const newEmployer = await EmployerService.create({ name, age, office });
+
+    return formatJSONResponse(200, newEmployer);
+  } catch (error) {
+    return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
+      error: error.message,
+    });
   }
-
-  const newId = employers[employers.length - 1].id + 1;
-
-  const newEmployer = {
-    id: newId,
-    name,
-    age,
-    office,
-  };
-
-  employers.push(newEmployer);
-
-  return formatJSONResponse(200, newEmployer);
 };
