@@ -1,6 +1,16 @@
 const { db } = require("../database");
 
 class EmployerRepository {
+  async findAll() {
+    const { Items } = await db
+      .scan({
+        TableName: "employers",
+      })
+      .promise();
+
+    return Items;
+  }
+
   async findById(id) {
     const { Item } = await db
       .get({

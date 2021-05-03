@@ -3,6 +3,12 @@ const { v4: uuid } = require("uuid");
 const { EmployerRepository } = require("../repositories/EmployerRepository");
 
 class EmployerService {
+  async findAll() {
+    const employers = await EmployerRepository.findAll();
+
+    return employers;
+  }
+
   async findById(id) {
     const employerById = await EmployerRepository.findById(id);
 

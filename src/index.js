@@ -15,9 +15,9 @@ const formatJSONResponse = (status, response) => {
 
 module.exports.listEmployers = async (event) => {
   try {
-    const data = await db.scan(params).promise();
+    const employers = await EmployerService.findAll();
 
-    return formatJSONResponse(200, data);
+    return formatJSONResponse(200, employers);
   } catch (error) {
     return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
       error: error.message,
