@@ -49,6 +49,12 @@ functions:
       - http:
           path: employers
           method: post
+  updateEmployer:
+    handler: src/index.updateEmployer
+    events:
+      - http:
+          path: employers/{id}
+          method: put
 
 resources:
   Resources:

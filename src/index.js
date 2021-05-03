@@ -1,10 +1,6 @@
 "use strict";
 
-const { db } = require("./database");
 const { EmployerService } = require("./services/EmployerService");
-const params = {
-  TableName: "employers",
-};
 
 const formatJSONResponse = (status, response) => {
   return {
@@ -40,12 +36,31 @@ module.exports.getEmployer = async (event) => {
 };
 
 module.exports.createEmployer = async (event) => {
-  const { name, age, office } = JSON.parse(event.body);
+  const { nome, idade, cargo } = JSON.parse(event.body);
 
   try {
-    const newEmployer = await EmployerService.create({ name, age, office });
+    const newEmployer = await EmployerService.create({ nome, idade, cargo });
 
     return formatJSONResponse(200, newEmployer);
+  } catch (error) {
+    return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
+      error: error.message,
+    });
+  }
+};
+
+module.exports.updateEmployer = async (event) => {
+  const { id } = event.pathParameters;
+  const { nome, idade, cargo } = JSON.parse(event.body);
+
+  try {
+    const updatedEmployer = await EmployerService.update(id, {
+      nome,
+      idade,
+      cargo,
+    });
+
+    return formatJSONResponse(200, updatedEmployer);
   } catch (error) {
     return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
       error: error.message,

@@ -19,8 +19,8 @@ class EmployerService {
     return employerById;
   }
 
-  async create({ name, age, office }) {
-    if (!name || !age || !office) {
+  async create({ nome, idade, cargo }) {
+    if (!nome || !idade || !cargo) {
       throw new Error("Data is required");
     }
 
@@ -28,9 +28,9 @@ class EmployerService {
 
     const employer = {
       id: uuid(),
-      name,
-      age,
-      office,
+      nome,
+      idade,
+      cargo,
       created_at: timestamp,
       updated_at: timestamp,
     };
@@ -40,6 +40,26 @@ class EmployerService {
     } catch (error) {
       throw new Error(error.message);
     }
+  }
+
+  async update(id, { nome, idade, cargo }) {
+    if (!nome || !idade || !cargo) {
+      throw new Error("Data is required");
+    }
+
+    const employerExists = await EmployerRepository.findById(id);
+
+    if (!employerExists) {
+      throw new Error("Employer not found");
+    }
+
+    const updatedEmployer = await EmployerRepository.update(id, {
+      nome,
+      idade,
+      cargo,
+    });
+
+    return updatedEmployer;
   }
 }
 

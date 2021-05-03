@@ -40,6 +40,32 @@ class EmployerRepository {
       )
       .promise();
   }
+
+  async update(id, { nome, idade, cargo }) {
+    const timestamp = new Date().getTime();
+
+    const updatedEmployer = await db
+      .update({
+        TableName: "employers",
+        Key: {
+          id,
+        },
+        UpdateExpression:
+          "SET nome = :nome, idade = :idade, cargo = :cargo," +
+          "updated_at = :updated_at",
+        ConditionExpression: "attribute_exists(id)",
+        ExpressionAttributeValues: {
+          ":nome": nome,
+          ":idade": idade,
+          ":cargo": cargo,
+          ":updated_at": timestamp,
+        },
+        ReturnValues: "ALL_NEW",
+      })
+      .promise();
+
+    return updatedEmployer;
+  }
 }
 
 exports.EmployerRepository = new EmployerRepository();
