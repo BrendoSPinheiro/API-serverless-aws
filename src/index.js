@@ -28,7 +28,7 @@ module.exports.getEmployer = async (event) => {
     const employer = await EmployerService.findById(id);
 
     return formatJSONResponse(200, employer);
-  } catch ({ error }) {
+  } catch (error) {
     return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
       error: error.message,
     });
