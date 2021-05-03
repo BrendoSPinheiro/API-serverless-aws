@@ -1,4 +1,5 @@
 const { v4: uuid } = require("uuid");
+
 const { EmployerRepository } = require("../repositories/EmployerRepository");
 
 class EmployerService {
@@ -18,7 +19,11 @@ class EmployerService {
       updated_at: timestamp,
     };
 
-    await EmployerRepository.create(employer);
+    try {
+      await EmployerRepository.create(employer);
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
 
