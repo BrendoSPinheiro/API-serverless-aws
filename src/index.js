@@ -67,3 +67,16 @@ module.exports.updateEmployer = async (event) => {
     });
   }
 };
+
+module.exports.deleteEmployer = async (event) => {
+  const { id } = event.pathParameters;
+
+  try {
+    await EmployerService.delete(id);
+    return formatJSONResponse(204);
+  } catch (error) {
+    return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
+      error: error.message,
+    });
+  }
+};

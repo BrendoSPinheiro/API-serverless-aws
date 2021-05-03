@@ -55,6 +55,12 @@ functions:
       - http:
           path: employers/{id}
           method: put
+  deleteEmployer:
+    handler: src/index.deleteEmployer
+    events:
+      - http:
+          path: employers/{id}
+          method: delete
 
 resources:
   Resources:

@@ -61,6 +61,16 @@ class EmployerService {
 
     return updatedEmployer;
   }
+
+  async delete(id) {
+    const employerExists = await EmployerRepository.findById(id);
+
+    if (!employerExists) {
+      throw new Error("Employer not found");
+    }
+
+    await EmployerRepository.delete(id);
+  }
 }
 
 exports.EmployerService = new EmployerService();

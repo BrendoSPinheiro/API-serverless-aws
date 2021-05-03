@@ -44,27 +44,47 @@ class EmployerRepository {
   async update(id, { nome, idade, cargo }) {
     const timestamp = new Date().getTime();
 
-    const updatedEmployer = await db
-      .update({
-        TableName: "employers",
-        Key: {
-          id,
-        },
-        UpdateExpression:
-          "SET nome = :nome, idade = :idade, cargo = :cargo," +
-          "updated_at = :updated_at",
-        ConditionExpression: "attribute_exists(id)",
-        ExpressionAttributeValues: {
-          ":nome": nome,
-          ":idade": idade,
-          ":cargo": cargo,
-          ":updated_at": timestamp,
-        },
-        ReturnValues: "ALL_NEW",
-      })
-      .promise();
+    try {
+      const updatedEmployer = await db
+        .update({
+          TableName: "employers",
+          Key: {
+            id,
+          },
+          UpdateExpression:
+            "SET nome = :nome, idade = :idade, cargo = :cargo," +
+            "updated_at = :updated_at",
+          ConditionExpression: "attribute_exists(id)",
+          ExpressionAttributeValues: {
+            ":nome": nome,
+            ":idade": idade,
+            ":cargo": cargo,
+            ":updated_at": timestamp,
+          },
+          ReturnValues: "ALL_NEW",
+        })
+        .promise();
+      return updatedEmployer;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 
-    return updatedEmployer;
+  async delete(id) {
+    try {
+      await db
+        .delete({
+          TableName: "employers",
+          Key: {
+            id,
+          },
+          ConditionExpression: "attribute_exists(id)",
+        })
+        .promise();
+      return;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
 
