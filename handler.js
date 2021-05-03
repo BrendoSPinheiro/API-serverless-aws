@@ -8,6 +8,9 @@ const employers = [
 ];
 
 const { db } = require("./src/database");
+const params = {
+  TableName: "employers",
+};
 
 const formatJSONResponse = (status, response) => {
   return {
@@ -17,7 +20,15 @@ const formatJSONResponse = (status, response) => {
 };
 
 module.exports.listEmployers = async (event) => {
-  return formatJSONResponse(200, employers);
+  try {
+    const data = await db.scan(params).promise();
+
+    return formatJSONResponse(200, data);
+  } catch (error) {
+    return formatJSONResponse(error.statusCode ? error.statusCode : 500, {
+      error: error.message,
+    });
+  }
 };
 
 module.exports.getEmployer = async (event) => {

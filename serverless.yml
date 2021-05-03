@@ -17,6 +17,18 @@ provider:
 
   stage: dev
   region: sa-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: arn:aws:dynamodb:sa-east-1:703750051159:table/employers
 
 functions:
   listEmployers:
@@ -37,3 +49,19 @@ functions:
       - http:
           path: employers
           method: post
+
+resources:
+  Resources:
+    EmployersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: employers
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
