@@ -1,6 +1,4 @@
-# Stefanini Challenge
-
-Teste técnico para a vaga de desenvolvedor backend
+# API-serverless-aws
 
 ## Como executar o projeto em homologação:
 
